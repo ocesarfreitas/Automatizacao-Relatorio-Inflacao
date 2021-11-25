@@ -1,0 +1,578 @@
+\documentclass[xcolor={dvipsnames}]{beamer}
+\usetheme{Copenhagen}
+
+\definecolor{upforestgreen}{rgb}{0.0, 0.27, 0.13}
+\definecolor{coolblack}{rgb}{0.0, 0.18, 0.39}
+
+\setbeamercolor*{structure}{bg=upforestgreen!20,fg=upforestgreen}
+\setbeamercolor*{palette primary}{use=structure,fg=white,bg=structure.fg}
+\setbeamercolor*{palette secondary}{use=structure,fg=white,bg=structure.fg}
+\setbeamercolor*{palette tertiary}{use=structure,fg=white,bg=structure.fg}
+\setbeamercolor*{palette quaternary}{fg=white,bg=structure.fg!5!coolblack}
+\setbeamercolor{titlelike}{parent=palette primary,fg=white}
+\setbeamercolor{frametitle}{bg=gray!10!white,fg=structure.fg!75!white}
+\setbeamercolor{sidebar}{fg=white,bg=white}
+
+\usepackage{graphicx, booktabs, subcaption, textpos, palatino, hyperref, amsmath, smartdiagram}
+\usepackage[export]{adjustbox}
+\usepackage[portuguese]{babel}
+\setbeamercovered{highly dynamic}
+\newcounter{saveenumi}
+\newcommand{\seti}{\setcounter{saveenumi}{\value{enumi}}}
+\newcommand{\conti}{\setcounter{enumi}{\value{saveenumi}}}
+
+\title[Mulheres no Sudeste]{Mulheres no Sudeste: Uma análise salarial}
+\subtitle{PNAD Contínua 2012}
+\author[Albuquerque \and Linhares \and Batista]{César Freitas Albuquerque \and Júlia Michalski Linhares \and Sarah Moreira Batista}
+\institute[UnB]{UnB - Universidade de Brasília}
+\date{28 de outubro de 2021}
+
+\begin{document}
+\begin{frame}
+    \titlepage
+    \begin{figure}[htpb]
+            \includegraphics[width=0.225\linewidth, left]{Figuras/download.png}
+    \end{figure}
+\end{frame}
+
+\addtobeamertemplate{frametitle}{}{%
+\begin{textblock*}{75mm}(0.9\textwidth,-0.9cm)
+\includegraphics[height=0.8cm,width=1.7cm]{Figuras/download.png}
+\end{textblock*}}
+
+\begin{frame}
+    \tableofcontents
+\end{frame}
+
+\section{Amostra e Análises Descritivas}
+\begin{frame}
+    \tableofcontents[currentsection]
+\end{frame}
+\subsection{Amostra}
+\begin{frame}{Amostra}
+    \begin{itemize}
+        \item Base de dados: PNAD Contínua 2012
+        \item 293.858 indivíduos para compor a amostra da região Sudeste
+        \item Variável \textit{V1028} para os pesos
+        \item Variável \textit{cor}: desconsideramos as etnias asiáticas e indígenas
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Amostra}
+    \begin{table}[H]
+\caption{Distribuição da Amostra para a região Sudeste}
+\centering
+\begin{adjustbox}{width=.8\columnwidth,center}
+\begin{tabular}{@{}llccccc@{}}
+\toprule
+\textbf{Gênero} &
+  \textbf{Cor} &
+  \multicolumn{1}{l}{\textbf{ES}} &
+  \multicolumn{1}{l}{\textbf{MG}} &
+  \multicolumn{1}{l}{\textbf{RJ}} &
+  \multicolumn{1}{l}{\textbf{SP}} &
+  \multicolumn{1}{l}{\textbf{Total}} \\ \midrule
+\textbf{Homem}  & Branco   & 17702 & 8624  & 16505 & 27121 & 69952  \\
+\textbf{}       & Preto    & 3715  & 1479  & 5231  & 2489  & 12914  \\
+\textbf{}       & Amarelo  & 72    & 35    & 67    & 519   & 693    \\
+\textbf{}       & Pardo    & 19839 & 9742  & 15736 & 13086 & 58403  \\
+\textbf{}       & Indígena & 34    & 15    & 49    & 65    & 163    \\
+\textbf{Mulher} & Branco   & 18572 & 9555  & 19624 & 29599 & 77350  \\
+\textbf{}       & Preto    & 3661  & 1449  & 5592  & 2537  & 13239  \\
+\textbf{}       & Amarelo  & 60    & 32    & 71    & 561   & 724    \\
+\textbf{}       & Pardo    & 20171 & 9843  & 16806 & 13402 & 60222  \\
+\textbf{}       & Indígena & 32    & 29    & 62    & 75    & 198    \\ \midrule
+\textbf{Total}  &          & 83858 & 40803 & 79743 & 89454 & 293858 \\ \bottomrule
+\end{tabular}
+\end{adjustbox}
+\caption*{\textbf{Fonte:} PNAD Contínua - IBGE (2012)}
+\end{table}
+\end{frame}
+
+\begin{frame}{Situação no domicílio}
+    \begin{table}[h]
+\begin{adjustbox}{width=\columnwidth,center}
+\begin{tabular}{lcccccc}
+\hline
+\textbf{Estado} & \textbf{Situação do Domicílio} & \textbf{Porcentagem} & \textbf{Pessoas/Domicílio}\\ \hline
+\textbf{MG} & \textbf{Urbano} & 72,32\% & 3.80 \\ 
+\textbf{}   & \textbf{Rural}  & 27,68\% & 3.94 \\\hline
+\textbf{ES} & \textbf{Urbano} & 80,72\% & 3,73 \\ 
+\textbf{}   & \textbf{Rural}  & 19,28\% & 3,83 \\\hline
+\textbf{RJ} & \textbf{Urbano} & 92,75\% & 3,64 \\
+\textbf{}   & \textbf{Rural}  & 7,25\%  & 4,03 \\ \hline
+\textbf{SP} & \textbf{Urbano} & 83,23\% & 3,79 \\
+\textbf{}   & \textbf{Rural}  & 16,77\% & 1,58 \\\hline
+\end{tabular}
+\end{adjustbox}
+\end{table}
+
+\end{frame}
+
+\subsection{Renda}
+\begin{frame}{Desigualdade de renda}
+\begin{figure}
+\centering
+  \includegraphics[width=\linewidth]{Figuras/trabalho mulher 02 (1).png}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Decis de renda}
+    \begin{table}[!h]
+    \caption{Decis de renda da população total e por gênero (em R\$)\\
+    Região Sudeste}
+    \begin{adjustbox}{width=0.6\columnwidth,center}
+    \begin{tabular}{lccc} \hline
+    \textbf{Decis} & \textbf{Renda Total} & \textbf{Renda Homem} & \textbf{Renda Mulher}\\\hline
+    10\%           & 500,00     & 600,00     & 400,00    \\
+    20\%           & 622,00     & 700,00     & 600,00    \\
+    30\%           & 700,00     & 800,00     & 622,00    \\
+    40\%           & 800,00     & 950,00     & 700,00    \\
+    50\%           & 1.000,00   & 1.100,00   & 800,00    \\
+    60\%           & 1.200,00   & 1.250,00   & 900,00    \\
+    70\%           & 1.500,00   & 1.500,00   & 1.200,00  \\
+    80\%           & 2.000,00   & 2.000,00   & 1.500,00  \\
+    90\%           & 3.000,00   & 3.500,00   & 2.500,00  \\\hline
+    99\%*          & 12.000,00  & 14.514,69  & 9.000,00  \\ 
+    99,9\%*        & 25.000,00  & 30.000,00  & 18.000,00 \\\hline
+    \textbf{Mínimo}& 1,00       & 1,00       & 1,00      \\ 
+    \textbf{Máximo}& 120.000,00 & 120.000,00 & 50.000,00 \\
+    \textbf{Média} & 1.441,00   & 1663,00    & 1.172,00  \\\hline
+    \end{tabular}
+    \end{adjustbox}
+    \caption*{\textbf{Fonte:} PNAD Contínua IBGE (2012)}
+\end{table}
+\end{frame}
+
+\begin{frame}{Indíce de Gini}
+    \begin{table}[h]
+    \caption{Índice de Gini por UF e gênero}
+    \centering
+    \begin{tabular}{lcccc} \hline
+    \textbf{Estados} & Homem  & Mulher & Total  \\\hline
+    Espírito Santo   & 0,4780 & 0,4447 & 0,4734 \\
+    Minas Gerais     & 0,4687 & 0,4412 & 0,4686 \\
+    Rio de Janeiro   & 0,4668 & 0,4555 & 0,4685 \\
+    São Paulo        & 0,4887 & 0,4610 & 0,4864 \\\hline
+    Total            & 0,4874 & 0,4612 & 0,4849 \\\hline
+    \end{tabular}
+    \caption*{\textbf{Fonte:} PNAD Contínua IBGE (2012)}
+\end{table}
+
+\end{frame}
+
+\begin{frame}{Diferença entre horas por gênero}
+    \begin{figure}
+        \centering
+        \includegraphics[width=.8\linewidth]{Figuras/trabalho mulher 06 (1).png}
+        \label{fig:my_label}
+    \end{figure}
+\end{frame}
+
+\subsection{Mercado de Trabalho}
+\begin{frame}{Taxa de ocupação}
+    \begin{table}[H]
+    \caption{Taxa de ocupação por estado (\%)}
+    \centering
+    \begin{tabular}{lccc}
+    \textbf{Estados} & Homem & Mulher& Total \\\hline
+    Espírito Santo   & 94,48 & 90,56 & 92,77 \\
+    Minas Gerais     & 94,23 & 91,29 & 92,97 \\
+    Rio de Janeiro   & 93,58 & 90,16 & 92,03 \\
+    São Paulo        & 94,00 & 90,85 & 92,59 \\\hline
+    Total            & 94,05 & 90,67 & 92,54 \\\hline         
+    \end{tabular}
+    \caption*{\textbf{Fonte:} PNAD Contínua IBGE (2012)}
+\end{table}
+
+\end{frame}
+\begin{frame}{Ocupações principais por gênero}
+    \begin{figure}
+        \centering
+        \includegraphics[width=1.1\linewidth]{Figuras/trabalho mulher 09.png}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Motivo pelo qual não procurou emprego}
+    \begin{figure}
+        \centering
+        \includegraphics[width=\linewidth]{Figuras/Motivo_Desemprego.png}
+    \end{figure}
+\end{frame}
+
+\subsection{Educação}
+\begin{frame}{Nível de educação por gênero}
+    \begin{figure}
+        \centering
+        \includegraphics[width=\linewidth]{Figuras/educação 01.png}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Média de renda por nível educacional}
+    \begin{figure}
+        \centering
+        \includegraphics[width=\linewidth]{Figuras/educação 03.png}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Prop. das faixas salariais por nível educacional}
+    \begin{figure}
+        \centering
+        \includegraphics[width=1.1\linewidth]{Figuras/educação 04.png}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Nem-nem}
+    \begin{figure}
+        \centering
+        \includegraphics[width=.75\linewidth]{Figuras/situacaopes.png}
+    \end{figure}
+\end{frame}
+\section{Modelos lineares}
+\begin{frame}
+    \tableofcontents[currentsection]
+\end{frame}
+\subsection{MQO}
+\begin{frame}{MQO}
+    \begin{itemize}
+    \item \textbf{Modelo 1}:
+    \begin{equation}
+        log(salh) = educ +idade + idade^2  
+    \end{equation} 
+    \item \textbf{Modelo 2}:
+    \begin{equation}
+        log(salh) = educ +idade + idade^2 + fem + supc
+    \end{equation} 
+    \item \textbf{Modelo 3}:
+    \begin{equation}
+        log(salh) = educ +idade + idade^2 + fem + supc +RJ+ES+SP
+    \end{equation} 
+    \item \textbf{Modelo 4}:
+    \begin{equation}
+        log(salh) = educ +idade + idade^2 + fem + supc +rendadom+pp\\+urb+(filho6*fem)
+    \end{equation}
+    \end{itemize}
+\end{frame}
+
+%\begin{frame}{Retorno da educação}
+%    \begin{itemize}
+%        \item Modelo 1: 9,7\%
+%        \item Modelo 2: 6,8\%
+%        \item Modelo 3: 6,7\%
+%        \item Modelo 4: 4,7\%
+%        \item O retorno da educação é %estatisticamente significante no nível de 5\%
+%    \end{itemize}
+%\end{frame}
+
+\begin{frame}{Modelos MQO}
+    \begin{figure}
+        \centering
+        \includegraphics[width=.65\linewidth]{Figuras/2021-10-28 (1).png}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Teste de especificação}
+ \begin{table}[H]
+    \caption{Teste RESET}
+    \centering
+    \begin{tabular}{lccccc}\hline
+    \textbf{Teste}     & df1 & df2   & Estatística & P-Valor \\\hline
+    RESET & 2   & 126536 & 3829.3     & <2.2e-16\\\hline
+ \end{tabular}
+\end{table}
+\end{frame}
+
+\subsection{MQ2E}
+\begin{frame}{MQ2E}
+    \item \textbf{Instrumento 1}:
+    \begin{equation}
+        \widehat{educ} = s1nasc + educconj + npesdom 
+    \end{equation} 
+    \item \textbf{Instrumento 2}:
+    \begin{equation}
+        \widehat{educ} = s1nasc + educconj 
+    \end{equation} 
+\end{frame}
+
+\begin{frame}{Testes para as VIs}
+\begin{table}[H]
+    \caption{Testes dos instrumentos 1}
+    \centering
+    \begin{tabular}{lccccc}\hline
+    \textbf{Testes}     & df1 & df2   & Estatística & P-Valor \\\hline
+    Instrumentos Fracos & 2   & 43659 & 33163.2     & $<$2e-16$^{***}$\\
+    Wu-Hausman          & 1   & 43660 & 208.2       & $<$2e-16$^{***}$ \\
+    Sargan              & 1   & NA    & 234.6       & $<$2e-16$^{***}$ \\\hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \caption{Testes dos instrumentos 2}
+    \centering
+    \begin{tabular}{lccccc}\hline
+    \textbf{Testes}     & df1 & df2   & Estatística & P-Valor \\\hline
+    Instrumentos Fracos & 2   & 43660 & 49673.267   & $<$2e-16$^{***}$\\
+    Wu-Hausman          & 1   & 43660 & 191.311     & $<$2e-16$^{***}$ \\
+    Sargan              & 1   & NA    & 0.827       & 0.363 \\\hline
+    \end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}{MQ2E x MQO}
+    \begin{figure}
+        \centering
+        \includegraphics[width = .55\linewidth]{Figuras/2021-10-28.png}
+    \end{figure}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Painel}
+\begin{frame}{Painel}
+\begin{itemize}
+    \item Painel desbalanceado;
+    \item Indexadores: V1016 e idind;
+    \item Ao mesmo tempo que o painel é grande, ele é pequeno;
+    \item Estimado por diferentes métodos;
+    
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Regressões}
+\begin{center}
+    \includegraphics[width=7cm]{Figuras/painel.png}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Qual modelo escolher?}
+\begin{center}
+    \includegraphics[width=8cm]{Figuras/teste_painel.png}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Efeitos Aleatórios Correlacionados -EAC}
+\begin{itemize}
+    \item \textbf{EAC 1}:
+    \begin{equation}
+    \begin{split}
+        log(salh) = educ +idade + idade^2 +fem + supc + PP+ urb\\+ rendadom+ fem + fem*(filho6) + med\_idade+med\_idadesq\\ + med\_rendadom + med\_supc+ med\_filho6 +med\_pp\\+ med\_fem
+    \end{split}
+    \end{equation} 
+    \item \textbf{EAC 2}:
+    \begin{equation}
+    \begin{split}
+        log(salh) = educ +idade + idade^2 + fem + supc +PP+\\urb+ rendadom+fem + fem*(filho6)+ med_idade+\\med\_idadesq+ +med\_rendadom +med\_filho6
+    \end{split}
+    \end{equation}
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Efeitos Aleatórios Correlacionados -EAC}
+\begin{center}
+    \includegraphics[width=3cm]{Figuras/CRE.png}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Modelos não lineares}
+\begin{frame}
+    \tableofcontents[currentsection]
+\end{frame}
+\subsection{Modelo Logit}
+\begin{frame}{Modelo Logit}
+    \begin{itemize}
+        \item A variável dependente de \textit{Ocupação} é binária, sendo ela igual 1 quando o indivíduo está ocupado e 0 quando ele não está.
+        \item Ela viola certos pressupostos do modelo linear como o da homoscedasticidade, linearidade e normalidade.
+        \item Logit ou Probit?
+        \begin{itemize}
+            \item A principal diferença entre elas é que no primeiro a distribuição é \textit{logística} e no outro é \textit{normal};
+            \item Devido a maior praticidade de interpretação do modelo de \textit{regressão logística}, ele foi o escolhido.
+        \end{itemize}
+    \end{itemize}    
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Critério de seleção de Akaike}
+\begin{table}[H]
+    \caption{Seleção de Modelo baseado em AICc}
+    \centering
+    \begin{tabular}{l|c|ccccc}\hline
+    M. Logit& k  & AICc     & AICcWt\\\hline
+    logit4  & 15 & 205407.6 & 1.00\\
+    logit1  & 13 & 205430.9 & 0.00\\
+    logit5  & 13 & 205430.9 & 0.00\\
+    logit2  & 14 & 205758.7 & 0.00\\
+    logit3  &  9 & 205758.7 & 0.00\\\hline
+    \end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}{Resultados}
+\begin{table}[H]
+    \caption{Estimação de \textbf{logit4}}
+    \centering
+    \begin{adjustbox}{width=.4\columnwidth,center}
+    \begin{tabular}{l|c}\hline
+    Variáveis   & Coef. \\\hline
+    Intercepto  & -2.511$^{***}$ \\
+    Idade       & 0.25$^{***}$ \\
+    Idade$^2$   & -0.003$^{***}$ \\
+    Educ        & 0.013$^{***}$ \\
+    SupC        & 0.421$^{***}$\\
+    Fem         & -2.13$^{***}$\\
+    Filho6      & 0.653$^{***}$\\
+    Urb         & -0.202$^{***}$\\
+    PP          & -0.145$^{***}$\\
+    RendaDom    & 0.0001$^{***}$\\
+    Fem:Filho6  & -1.027$^{***}$ \\
+    Fem:PP      & 0.133$^{***}$ \\
+    Fem:SupC    & 0.043 \\
+    Educ:Urb    & 0.014$^{***}$ \\
+    Educ:PP     & 0.017$^{***}$\\
+    Educ:Fem    & 0.076$^{***}$\\
+    \hline \\[-2ex]
+    \hline
+    Observações & 91.575 \\ 
+    R$^2$ Ajustado & 0.460 \\
+    Valor de Log{--}Verossimilhança & $-$99,187.450 \\ 
+    $\hat{\lambda}$ & 0.192$^{***}$  (0.032) \\ 
+    $\sigma$ & 0.576 
+    \\\hline
+    \end{tabular}
+    \end{adjustbox}
+\end{table}
+\end{frame}
+
+\begin{frame}{Resultados}
+\begin{table}[H]
+    \caption{Teste da Razão de Verossimilhança}
+    \centering
+    \begin{tabular}{l|cccc}\hline
+   \textbf{ Modelos}& df & LogLik & Chisq  & Pr($>$Chisq)     \\\hline
+    M. Restrito   & 13 & $-$102911 &        &                \\
+    M. Irrestrito & 15 & $-$102689 & 443.45 & $<$2e-16$^{***}$ \\\hline
+    \end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}{Resultados}
+    \begin{table}[H]
+    \caption{Efeito Parcial Médio}
+    \centering
+    \begin{tabular}{l|cc}\hline
+    \textbf{V. Explicativas} & \textbf{logit4}  \\\hline
+    Educ            & 0.0128  \\
+    Fem             & -0.2451 \\
+    Filho6          & -0.0083 \\
+    PP              & 0.0100  \\
+    SupC            & 0.0880  \\
+    Idade           & -0.0013 \\
+    Urb             & -0.0077 \\\hline
+    \end{tabular}
+\end{table}
+\end{frame}
+\subsection{Modelo Tobit}
+\begin{frame}{Modelo Tobit: Resultados}
+\begin{figure}
+    \centering
+    \includegraphics[width =.34\linewidth]{Figuras/2021-10-27.png}
+\end{figure}
+\end{frame}
+\begin{frame}{Modelo Tobit: Resultados}
+    \begin{table}[H]
+    \centering
+    \begin{tabular}{l|cc}\hline
+    V. Explicativas & Tobit   & MQO     \\\hline
+    Idade           & 0.0427  & 0.0118  \\
+    Educ            & 0.0452  & 0.0456  \\
+    PP              & -0.0628 & -0.0635 \\
+    SupC            & 0.3430  & 0.3399  \\
+    Fem             & -0.2512 & -0.2375 \\
+    Filho6          & 0.0449  & 0.0558  \\
+    Urb             & 0.1579  & 0.1618  \\
+    RendaDom        & 0.00009 & 0.00009 \\\hline
+    \end{tabular}
+\end{table}
+\end{frame}
+\subsection{Modelo Poisson}
+\begin{frame}{Modelo Poisson: Resultados}
+\begin{table}[H]
+    \caption{Seleção de Modelo baseado em AICc}
+    \centering
+    \begin{tabular}{l|c|ccccc}\hline
+    M. Poisson& k  & AICc     & AICcWt\\\hline
+    poisson3  & 14 & 122231.7 & 1.00  \\
+    poisson2  & 12 & 122243.3 & 0.00  \\
+    poisson4  & 13 & 122245.8 & 0.00  \\
+    poisson1  & 10 & 122289.1 & 0.00  \\\hline
+    \end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}{Modelo Poisson: Resultados}
+    \begin{figure}
+        \centering
+        \includegraphics[width=.375\linewidth]{Figuras/Captura de tela 2021-10-27 202540.png}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Modelo Poisson: Resultados}
+    \begin{table}[H]
+        \caption{Educ, Fem, PP}
+        \centering
+        \begin{adjustbox}{width=\columnwidth,center}
+            \begin{tabular}{l|c|ccccc}\hline
+    Modelos   & Res. Df & Resid. Dev & Df & Deviance & Pr($>$Chi)       \\\hline
+    M. Rest.  & 43661   & 42030      &    &          & \\
+    M. Irres. & 43658   & 42000      & 3  & 30.17    &  0.0000012$^{***}$ \\\hline
+            \end{tabular}
+        \end{adjustbox}
+\end{table}
+\end{frame}
+
+\begin{frame}{Modelo Poisson: Resultados}
+    \begin{figure}[H]
+    \centering
+    \caption{Número de filhos estimados x Idade}
+    \includegraphics[width=.725\linewidth]{Figuras/00001d.png}
+    \caption*{\textbf{Fonte: }PNAD Contínua - IBGE (2012)}
+\end{figure}
+\end{frame}
+\subsection{Estimação de Heckit}
+\begin{frame}{Estimação de Heckit}
+    \begin{itemize}
+        \item  Trabalhar pode estar correlacionado com fatores não observáveis que impactam a oferta de salários.
+        \item O que pode ser um \textit{truncamento ocasional}, um tipo de seleção amostral.
+        \item Uma das formas de avaliar se há de fato um problema de seleção amostral no modelo é através da Estimação de Heckit.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Resultados}
+    \begin{itemize}
+        \item Equação de $\widehat{lsalh}$, somente para mulheres:
+    \end{itemize}
+\[\widehat{lsalh} = -0.263 + 0.044Idade - 0.0004Idade^2 + 0.052Educ \\ 
+    - 0.055PP + 0.45SupC + 0.00007RendaDom + 0.144Urb\]
+\begin{table}[H]
+\centering 
+\begin{adjustbox}{width=0.6\columnwidth,center}
+\begin{tabular}{lc} \hline \\[-1.8ex] 
+Observações & 91.575 \\ 
+R$^2$ Ajustado & 0.460 \\
+Valor de Log{--}Verossimilhança & $-$99,187.450 \\ 
+$\hat{\lambda}$ & 0.192$^{***}$  (0.032) \\ 
+$\sigma$ & 0.576 & 
+\hline 
+\end{tabular} 
+\end{adjustbox}
+\end{table}
+\end{frame}
+
+\begin{frame}
+    \titlepage
+    \begin{figure}[htpb]
+        \includegraphics[width=0.2\linewidth, left]{Figuras/download.png}
+    \end{figure}
+\end{frame}
+\end{document}  
