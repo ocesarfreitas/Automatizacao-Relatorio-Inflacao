@@ -1,0 +1,90 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Definindo o tema que irei utilizar como base
+\documentclass[xcolor=dvipsnames]{beamer}
+\usetheme{Copenhagen}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Paleta de cores 
+% Aqui vou definindo a paleta de cores que irei utilizar no Beamer, utilizo o site http://latexcolor.com/ para procurar as cores
+\definecolor{darkcyan}{rgb}{0.0, 0.55, 0.55}
+\definecolor{coolblack}{rgb}{0.0, 0.18, 0.39}
+\definecolor{midnightgreen(eaglegreen)}{rgb}{0.0, 0.29, 0.33}
+\definecolor{warmblack}{rgb}{0.0, 0.26, 0.26}
+
+% Essa parte é muito importante para "setar" como e onde serão modificadas as cores do beamer
+\setbeamercolor*{structure}{bg=midnightgreen(eaglegreen)!20,fg=midnightgreen(eaglegreen)}
+\setbeamercolor{palette sidebar primary}{fg=white!80!white}
+\setbeamercolor*{palette primary}{use=structure,fg=white,bg=structure.fg!80}
+\setbeamercolor*{palette secondary}{use=structure,fg=white,bg=structure.fg}
+\setbeamercolor*{palette tertiary}{use=structure,fg=white,bg=structure.fg}
+\setbeamercolor*{palette quaternary}{fg=white,bg=structure.fg!5!warmblack}
+\setbeamercolor{titlelike}{parent=palette primary,fg=white}
+\setbeamercolor{frametitle}{bg=gray!10!white,fg=structure.fg!75!white}
+\setbeamercolor{sidebar}{fg=white,bg=white}
+\setbeamercolor{navigation symbols dimmed}{fg=red!80!white}
+\setbeamercolor{navigation symbols}{fg=red!80!white}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Pacotes
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{subcaption}
+\usepackage{textpos, palatino, tikz}
+\usepackage{smartdiagram}
+\usepackage{listings}
+\usepackage{minted}
+\usepackage[export]{adjustbox}
+\usepackage[portuguese]{babel}
+\usepackage{hyperref}
+\usepackage{amsmath}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Informações 
+\lstset{language = R}
+
+\title[Título]{Título}
+\subtitle{Subtítulo}
+\author[Autor 1 \and Autor 2]{Autor 2 \and autor 2}
+\date{XX de XXXXXX de XXXX}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Slides
+\begin{document}
+\begin{frame}
+    \titlepage
+    \begin{figure}[htpb]
+            \includegraphics[width=.155\linewidth, left]{Figuras/logo_desajuste.png}
+    \end{figure}
+\end{frame}
+
+\logo{
+\includegraphics[width = .15\linewidth]{Figuras/logo_desajuste.png}
+}
+
+\begin{frame}
+    \tableofcontents
+\end{frame}
+
+\section{Seção 1} % Repito o "tableofcontents" para ficar como um slide de transição entre as seções
+\begin{frame}
+    \tableofcontents[currentsection]
+\end{frame}
+\subsection{Subseção 1}
+\begin{frame}{Frame Title}
+    
+\end{frame}
+\begin{frame}[fragile]
+    \frametitle{tidyverse}
+    
+    \rule{\textwidth}{1pt}
+    \scriptsize
+    \begin{minted}{R}
+         # Instalando pacote
+         install.package("tidyverse")
+         # Importando
+         library(tidyverse)
+    \end{minted}
+    \rule{\textwidth}{1pt}
+\end{frame}
+
+\end{document}  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
