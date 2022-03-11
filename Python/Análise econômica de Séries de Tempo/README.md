@@ -6,4 +6,6 @@ O objetivo do curso é apresentar as principais técnicas de econometria de sér
 ## Objetivos pessoais
 - Reproduzir todos os códigos em EViews no Python 
 - Indicar como as funções utilizadas em EViews se traduzem na prática em Python
+- Separar o conteúdo de cada aula em um arquivo .py diferente
 - Terminando o conteúdo da matéria, unificar todo material em um arquivo Jupiter
+- Reproduzir o conteúdo também em R Markdown, quando terminar o conteúdo.
