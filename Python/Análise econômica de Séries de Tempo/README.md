@@ -1,5 +1,9 @@
 # Análise Econômica de Séries de Tempo
 
-Objetivos:
-1. 
+## Ementa do curso
+O objetivo do curso é apresentar as principais técnicas de econometria de séries de tempo e aplicá-las aos modelos macroeconômicos para fins de previsão de variáveis e discussões de política econômica. Durante o curso os alunos estudarão a metodologia ARIMA, filtragem de variáveis e desenvolverão as técnicas para construção de modelos multivariados em processos estacionários e não estacionários. Cada um dos temas será acompanhado de aplicações empíricas.
 
+## Objetivos pessoais
+- Reproduzir todos os códigos em EViews no Python 
+- Indicar como as funções utilizadas em EViews se traduzem na prática em Python
+- Terminando o conteúdo da matéria, unificar todo material em um arquivo Jupiter
